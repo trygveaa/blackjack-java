@@ -8,4 +8,23 @@ public class Card {
         this.suit = suit;
         this.rank = rank;
     }
+
+    public CardSuit getSuit() {
+        return this.suit;
+    }
+
+    public CardRank getRank() {
+        return this.rank;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s%s", this.suit, this.rank);
+    }
+
+    public static Card fromString(String card) {
+        CardSuit suit = CardSuit.fromString(card.substring(0, 1));
+        CardRank rank = CardRank.fromString(card.substring(1));
+        return new Card(suit, rank);
+    }
 }
