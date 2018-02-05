@@ -17,6 +17,10 @@ public class Card {
         return this.rank;
     }
 
+    public int getGameValue() {
+        return this.rank.getGameValue();
+    }
+
     @Override
     public String toString() {
         return String.format("%s%s", this.suit, this.rank);
