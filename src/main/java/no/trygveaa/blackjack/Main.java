@@ -17,6 +17,13 @@ public class Main {
                 .orElseGet(CardDeck::new);
 
         Blackjack blackjack = new Blackjack(deck, new Player("dealer"), new Player("sam"));
+
+        Player winner = blackjack.play();
+
+        System.out.println(winner.getName());
+        Stream.of(blackjack.getSam(), blackjack.getDealer())
+                .map(player -> String.format("%s: %s", player.getName(), Main.cardsToString(player.getHand())))
+                .forEach(System.out::println);
     }
 
     private static CardDeck createDeckFromFile(String fileName) {
@@ -32,5 +39,9 @@ public class Main {
         }
 
         return new CardDeck(cards);
+    }
+
+    private static String cardsToString(List<Card> cards) {
+        return cards.stream().map(Card::toString).collect(Collectors.joining(", "));
     }
 }
