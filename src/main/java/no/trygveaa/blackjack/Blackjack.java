@@ -58,10 +58,9 @@ public class Blackjack {
     }
 
     private void drawUntilScore(Player player, int score) {
-        while (player.currentScore() < score) {
-            if (!this.draw(player)) {
-                break;
-            }
+        boolean drawSuccessful = true;
+        while (player.currentScore() < score && drawSuccessful) {
+            drawSuccessful = this.draw(player);
         }
     }
 
