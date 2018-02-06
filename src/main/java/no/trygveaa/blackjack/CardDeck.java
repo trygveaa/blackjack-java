@@ -27,6 +27,11 @@ public class CardDeck {
         return this.cards;
     }
 
+    /**
+     * Remove the first card from the deck and return it.
+     *
+     * @return the card wrapped in an optional, or an empty optional if the deck is empty
+     */
     public Optional<Card> draw() {
         if (this.cards.size() == 0) {
             return Optional.empty();
